@@ -44,4 +44,6 @@ Percentage of the requests served within a certain time (ms)
 现在 ngx_http_test_module模块使用短连接连接redis, 以后使用长连接这个速率可能达到1W左右， 基本满足要求
 4：可以通过修改redis_test()方法，去测试其他程序
 
+cosocket 是ngx_cosocket核心代码， 里面包括中写的库代码
+test 是redis_test测试代码
 
