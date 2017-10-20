@@ -53,4 +53,4 @@ Percentage of the requests served within a certain time (ms)
 
 cosocket 是ngx_cosocket核心代码， 里面包括中写的库代码
 test 是redis_test测试代码
-
+5: 现在每一个协程的栈空间都是64K， 可以更具需要修改
