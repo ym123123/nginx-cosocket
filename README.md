@@ -1,3 +1,10 @@
+编译:
+nginx中甬道c++代码(降低开发代价),所以需要修改cc/conf文件
+./configure --add-module=src/cosocket --add-module=src/test --with-ld-opt="-L/usr/local/lib/ -lhiredis"
+需要hireids库，如果你用其他的库， 这里宝hiredis改称对应的库
+
+
+
 在nginx 中调用阻塞库，阻塞库中包含sleep, usleep, 阻塞的socket, 但不包括文件IO(文件IO只能用多线程这种方式优化，参照nginx的实现方式)，nginx仍然能高并发处理。
 
 技术：
