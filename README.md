@@ -54,3 +54,62 @@ Percentage of the requests served within a certain time (ms)
 cosocket 是ngx_cosocket核心代码， 里面包括中写的库代码
 test 是redis_test测试代码
 5: 现在每一个协程的栈空间都是64K， 可以更具需要修改
+
+
+6：最新支持后段服务长连接
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        nginx/1.13.6
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /test
+Document Length:        10 bytes
+
+Concurrency Level:      100
+Time taken for tests:   8.621 seconds
+Complete requests:      100000
+Failed requests:        0
+Total transferred:      15300000 bytes
+HTML transferred:       1000000 bytes
+Requests per second:    11599.05 [#/sec] (mean)
+Time per request:       8.621 [ms] (mean)
+Time per request:       0.086 [ms] (mean, across all concurrent requests)
+Transfer rate:          1733.06 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    2   1.5      3       7
+Processing:     3    6   1.6      6      36
+Waiting:        2    5   2.0      4      35
+Total:          5    9   1.5      9      39
+
+Percentage of the requests served within a certain time (ms)
+  50%      9
+  66%      9
+  75%      9
+  80%      9
+  90%     10
+  95%     11
+  98%     11
+  99%     12
+ 100%     39 (longest request)
+
+是第五的两倍，还是廷强悍的
+
