@@ -110,8 +110,10 @@ ssize_t write (int __fd, const void *__buf, size_t __n)
 	if (task)
 	{
 		len = 0;
+
 		ngx_nonblocking(__fd);
 
+		conns[__fd]->data = task;
 		while (__n - len)
 		{
 			tmp = g_write(__fd, (const char *)__buf + len, __n - len);
@@ -150,6 +152,7 @@ ssize_t read (int __fd, void *__buf, size_t __nbytes)
 
 	if (task)
 	{
+		conns[__fd]->data = task;
 		ev = conns[__fd]->read;
 		ngx_nonblocking(__fd);
 lable:

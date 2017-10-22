@@ -7,6 +7,7 @@
 
 #include "../cosocket/ngx_cosocket.hpp"
 #include <hiredis/hiredis.h>
+#include "redis_list_test.hpp"
 
 static char *ngx_http_test_parse(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
 static ngx_int_t ngx_http_test_block(ngx_http_request_t *r);
@@ -76,7 +77,7 @@ ngx_chain_t *ngx_http_test_handler(ngx_http_request_t *r)
 	out = ngx_alloc_chain_link(r->pool);
 	buf = ngx_create_temp_buf(r->pool, str.len);
 
-	redis_test();
+	redis_list_test();
 
 	if (out == NULL || buf == NULL)
 	{
