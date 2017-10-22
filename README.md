@@ -113,3 +113,62 @@ Percentage of the requests served within a certain time (ms)
 
 是第五的两倍，还是廷强悍的
 
+7: 前端也是用长连接测试
+[ym@localhost sbin]$ ab -n 100000 -c 100 -k http://127.0.0.1:8000/test
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        nginx/1.13.6
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /test
+Document Length:        10 bytes
+
+Concurrency Level:      100
+Time taken for tests:   7.387 seconds
+Complete requests:      100000
+Failed requests:        0
+Keep-Alive requests:    99048
+Total transferred:      15795240 bytes
+HTML transferred:       1000000 bytes
+Requests per second:    13537.92 [#/sec] (mean)
+Time per request:       7.387 [ms] (mean)
+Time per request:       0.074 [ms] (mean, across all concurrent requests)
+Transfer rate:          2088.23 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       8
+Processing:     1    7   3.2      7     156
+Waiting:        1    7   3.1      7     155
+Total:          1    7   3.2      7     157
+
+Percentage of the requests served within a certain time (ms)
+  50%      7
+  66%      8
+  75%      8
+  80%      8
+  90%      8
+  95%      8
+  98%      9
+  99%     10
+ 100%    157 (longest request)
+
+
+这个性能也是不错的
